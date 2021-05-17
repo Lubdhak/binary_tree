@@ -5,6 +5,11 @@ class Node:
 		self.right = None
 
 def sample_tree():
+	#		 [18]
+# 	    / 	 \
+# 	[211] 	  [20]
+# 	/  \ 	  /  \
+# [23] [89] [10] [32]
 	root = Node(18)
 	root.left = Node(211)
 	root.right = Node(20)
