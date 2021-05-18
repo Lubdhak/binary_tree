@@ -4,17 +4,20 @@ from operations import *
 from info import *
 
 my_tree = sample_tree()
+
 print(inorder_traversal_recursive(my_tree))
-insert(my_tree,69)
 print(inorder_traversal_iterative(my_tree))
+
 print(preorder_traversal_recursive(my_tree))
 print(preorder_traversal_iterative(my_tree))
+
 print(postorder_traversal_recursive(my_tree))
 print(postorder_traversal_iterative(my_tree))
+
 print(levelorder_traversal_iterative(my_tree))
 print(levelorder_traversal_recursive(my_tree))
+
 print(get_tree_height(my_tree))
-print(get_tree_width(my_tree))
 
 
 # 23

@@ -35,7 +35,7 @@ def inorder_traversal_iterative(root):
 
 def preorder_traversal_iterative(root):
 	if root is None: return
-	stack = [root];results=[]
+	stack = [root]; results=[]
 	while stack:
 		node = stack.pop()
 		results.append(node.data)
