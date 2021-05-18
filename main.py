@@ -17,11 +17,4 @@ print(postorder_traversal_iterative(my_tree))
 print(levelorder_traversal_iterative(my_tree))
 print(levelorder_traversal_recursive(my_tree))
 
-print(get_tree_height(my_tree))
-
-
-# 23
-# 221
-# 18,89,10
-# 20
-# 32
+print(vertical_order_traversal_recursive(my_tree))

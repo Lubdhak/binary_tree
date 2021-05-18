@@ -64,19 +64,19 @@ def levelorder_traversal_iterative(root):
 	return results
 
 def levelorder_traversal_recursive(root):
-	if root is None: return []
-	height = get_tree_height(root)
-	result = {}
-	for horizontal_level in range(height):
-		result[horizontal_level] = __get_current_horizontal(root, horizontal_level, [])
-	return result
+	if root is None: return
+	result_map = {} ; root_idx = 0
+	__levelorder_traversal_recursive(root, root_idx, result_map)
+	return (sorted(result_map.items()))
 
-def __get_current_horizontal(root, current_horizontal_idx, results):
-	if root==None: return []
-	if current_horizontal_idx == 0: results.append(root.data)
-	__get_current_horizontal(root.left, current_horizontal_idx - 1, results)
-	__get_current_horizontal(root.right, current_horizontal_idx - 1, results)
-	return results
+def __levelorder_traversal_recursive(node, horizontal_idx, result_map):
+	if node is None: return 0
+	if horizontal_idx in result_map:
+		result_map[horizontal_idx].append(node.data)
+	else:
+		result_map[horizontal_idx] = [node.data]
+	__levelorder_traversal_recursive(node.left, horizontal_idx + 1, result_map)
+	__levelorder_traversal_recursive(node.right, horizontal_idx + 1, result_map)
 
 def vertical_order_traversal_recursive(root):
 	if root is None: return
