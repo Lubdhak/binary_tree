@@ -66,11 +66,30 @@ def levelorder_traversal_iterative(root):
 def levelorder_traversal_recursive(root):
 	if root is None: return []
 	height = get_tree_height(root)
-	return [_get_current_level(root, i, []) for i in range(height)]
+	result = {}
+	for horizontal_level in range(height):
+		result[horizontal_level] = __get_current_horizontal(root, horizontal_level, [])
+	return result
 
-def _get_current_level(root, level, results):
+def __get_current_horizontal(root, current_horizontal_idx, results):
 	if root==None: return []
-	if level==0: results.append(root.data)
-	_get_current_level(root.left, level-1, results)
-	_get_current_level(root.right, level-1, results)
+	if current_horizontal_idx == 0: results.append(root.data)
+	__get_current_horizontal(root.left, current_horizontal_idx - 1, results)
+	__get_current_horizontal(root.right, current_horizontal_idx - 1, results)
 	return results
+
+def vertical_order_traversal_recursive(root):
+	if root is None: return []
+	minimum, maximum = find_min_max_vertical_idx(root)
+	result = {}
+	for vertical_level in range(minimum, maximum+1):
+		result[vertical_level] = __get_current_vertical(root, vertical_level, 0, [])
+	return result
+
+def __get_current_vertical(node, vertical_idx, current_vertical_idx, results):
+	if node is None: return []
+	if current_vertical_idx == vertical_idx: results.append(node.data)
+	__get_current_vertical(node.left, vertical_idx, current_vertical_idx - 1 , results)
+	__get_current_vertical(node.right, vertical_idx, current_vertical_idx + 1 , results)
+	return results
+

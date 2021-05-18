@@ -1,20 +1,40 @@
-from info import get_tree_height
-from node import *
+from node import sample_tree
+from traversal import vertical_order_traversal_recursive,levelorder_traversal_recursive
 
-my_tree = sample_tree
+def vertical_order_O_n_pow_2(root):
+  return vertical_order_traversal_recursive(root)
+ 
 
-def tree_height(root):
-  if root is None: return 0
-  l_h = tree_height(root.left)
-  r_h = tree_height(root.right)
-  return max(l_h,r_h)+1
 
-def vertical_order(root):
-  if root is None: return
-  height = tree_height(root)
-  for i in range(height+1):
-    
+
+  
 
 
 
 
+my_tree = sample_tree()
+print(levelorder_traversal_recursive(my_tree))
+print(vertical_order_O_n_pow_2(my_tree))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def vertical_order_O_n_log_n(root):
+  pass
+
+
+def vertical_order_O_n(root):
+  pass
