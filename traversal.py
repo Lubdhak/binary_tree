@@ -1,5 +1,3 @@
-from info import *
-
 def inorder_traversal_recursive(root):
 	if root == None: return []
 	left_tree = inorder_traversal_recursive(root.left)
