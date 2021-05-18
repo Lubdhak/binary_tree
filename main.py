@@ -1,7 +1,5 @@
 from traversal import *
 from node import *
-from operations import *
-from info import *
 
 my_tree = sample_tree()
 
