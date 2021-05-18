@@ -79,17 +79,16 @@ def __get_current_horizontal(root, current_horizontal_idx, results):
 	return results
 
 def vertical_order_traversal_recursive(root):
-	if root is None: return []
-	minimum, maximum = find_min_max_vertical_idx(root)
-	result = {}
-	for vertical_level in range(minimum, maximum+1):
-		result[vertical_level] = __get_current_vertical(root, vertical_level, 0, [])
-	return result
+	if root is None: return
+	root_idx = 0 ; result_map = {}
+	__vertical_order_traversal_recursive(root, root_idx, result_map)
+	return sorted(result_map.items())
 
-def __get_current_vertical(node, vertical_idx, current_vertical_idx, results):
-	if node is None: return []
-	if current_vertical_idx == vertical_idx: results.append(node.data)
-	__get_current_vertical(node.left, vertical_idx, current_vertical_idx - 1 , results)
-	__get_current_vertical(node.right, vertical_idx, current_vertical_idx + 1 , results)
-	return results
-
+def __vertical_order_traversal_recursive(node, vertical_idx, result_map):
+	if node is None: return
+	if vertical_idx in result_map:
+		result_map[vertical_idx].append(node.data)
+	else:
+		result_map[vertical_idx] = [node.data]
+	__vertical_order_traversal_recursive(node.left, vertical_idx - 1, result_map)
+	__vertical_order_traversal_recursive(node.right, vertical_idx + 1, result_map)
