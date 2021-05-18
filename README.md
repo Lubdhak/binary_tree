@@ -1,11 +1,26 @@
-# binary_tree
+# Binary_tree
 
-To dos:
+<pre>
+							     [18]
+						 	    / 	 \
+						 	[211] 	 [20]
+	   					 	/  \ 	 /  \
+						 [23] [89] [10] [32]
+</pre>
 
-1. Vertical Order
-	*	min_max horizontal distance O(n^2)
-	*	map_based preorder traversal O(n Log n)
-	*	Level Order Traversal O(n)
-	
-2. Left View
-3. Left + Right view
+##To dos:
+
+
+
+
+##Done:
+
+1. In Order Traversal
+2. Pre Order Traversal
+3. Post Order Traversal
+4. Horizontal Order Traversal
+5. Vertical Order Traversal
+6. Node Insertion
+7. Max Height (0..n)
+8. Min Max Vertical (-n..n)
+
