@@ -15,3 +15,17 @@ def insert(root,data):
 			break
 		else:
 			queue.append(curr_root.right)
+
+def delete(root, data):
+  queue = [root]; last_child = None ; target_node = None
+  while queue:
+    node = queue.pop(0)
+    if node.data == data: target_node = node
+    if node.left == node.right == last_child == None:
+      last_child = node
+    if node.left: queue.append(node.left)
+    if node.right: queue.append(node.right)
+    if last_child and target_node: break
+  if not target_node: return
+  target_node.data = last_child.data
+  last_child.data = None

@@ -23,4 +23,5 @@
 6. Node Insertion
 7. Max Tree Height
 8. Min Max Vertical Indexes
+9. Node Deletion
 
