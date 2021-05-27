@@ -90,3 +90,21 @@ def __vertical_order_traversal_recursive(node, vertical_idx, result_map):
 		result_map[vertical_idx] = [node.data]
 	__vertical_order_traversal_recursive(node.left, vertical_idx - 1, result_map)
 	__vertical_order_traversal_recursive(node.right, vertical_idx + 1, result_map)
+
+def inorder_without_extra_space(root):
+	current = root
+	while current is not None:
+		if current.left is None:
+			yield current.data
+			current = current.right
+		else:
+			pre = current.left
+			while pre.right is not None and pre.right is not current:
+				pre = pre.right
+			if pre.right is None:
+				pre.right = current
+				current = current.left
+			else:
+				pre.right = None
+				yield current.data
+				current = current.right
