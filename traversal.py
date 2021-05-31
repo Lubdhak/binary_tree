@@ -108,3 +108,21 @@ def inorder_without_extra_space(root):
 				pre.right = None
 				yield current.data
 				current = current.right
+
+def  get_postorder(inorder, preorder):
+  in_end = len(preorder) - 1
+  in_start = 0
+  global pre_idx ; pre_idx = 0
+  global result ; result = []
+  global invalue_inidx_map ; invalue_inidx_map = { k: v for v, k in enumerate(inorder)}
+  __get_postorder(inorder, preorder, in_start, in_end)
+  return result
+
+def __get_postorder(inorder, preorder, in_start, in_end):
+  global pre_idx
+  if in_start > in_end: return
+  in_idx = invalue_inidx_map[preorder[pre_idx]]
+  pre_idx += 1
+  __get_postorder(inorder, preorder, in_start, in_idx - 1)
+  __get_postorder(inorder, preorder, in_idx + 1, in_end)
+  result.append(inorder[in_idx])
