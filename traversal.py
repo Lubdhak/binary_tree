@@ -109,7 +109,7 @@ def inorder_without_extra_space(root):
 				yield current.data
 				current = current.right
 
-def  get_postorder(inorder, preorder):
+def get_postorder(inorder, preorder):
   inorder_end_idx = len(preorder) - 1
   inorder_start_idx = 0
   global current_preorder_idx ; current_preorder_idx = 0
