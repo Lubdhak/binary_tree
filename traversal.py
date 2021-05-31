@@ -110,19 +110,17 @@ def inorder_without_extra_space(root):
 				current = current.right
 
 def  get_postorder(inorder, preorder):
-  in_end = len(preorder) - 1
-  in_start = 0
-  global pre_idx ; pre_idx = 0
-  global result ; result = []
+  inorder_end_idx = len(preorder) - 1
+  inorder_start_idx = 0
+  global current_preorder_idx ; current_preorder_idx = 0
   global invalue_inidx_map ; invalue_inidx_map = { k: v for v, k in enumerate(inorder)}
-  __get_postorder(inorder, preorder, in_start, in_end)
-  return result
+  return __get_postorder(inorder, preorder, inorder_start_idx, inorder_end_idx)
 
-def __get_postorder(inorder, preorder, in_start, in_end):
-  global pre_idx
-  if in_start > in_end: return
-  in_idx = invalue_inidx_map[preorder[pre_idx]]
-  pre_idx += 1
-  __get_postorder(inorder, preorder, in_start, in_idx - 1)
-  __get_postorder(inorder, preorder, in_idx + 1, in_end)
-  result.append(inorder[in_idx])
+def __get_postorder(inorder, preorder, inorder_start_idx, inorder_end_idx):
+  global current_preorder_idx
+  if inorder_start_idx > inorder_end_idx: return []
+  inorder_root_idx = invalue_inidx_map[preorder[current_preorder_idx]]
+  current_preorder_idx += 1
+  left_tree = __get_postorder(inorder, preorder, inorder_start_idx, inorder_root_idx - 1)
+  right_tree = __get_postorder(inorder, preorder, inorder_root_idx + 1, inorder_end_idx)
+  return left_tree + right_tree + [inorder[inorder_root_idx]]
