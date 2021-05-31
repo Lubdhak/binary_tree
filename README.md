@@ -25,6 +25,7 @@
 08. Min Max Vertical Indexes
 09. Node Deletion
 10. Get Postorder traversal from given Inorder and Preorder traversals
+11. Symmetric Tree Check
 
 
 ##Practiced:
