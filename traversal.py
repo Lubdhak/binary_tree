@@ -61,20 +61,20 @@ def levelorder_traversal_iterative(root):
 		if node.right: queue.append(node.right)
 	return results
 
-def levelorder_traversal_recursive(root):
+def levelorder_items_recursive(root):
 	if root is None: return
 	result_map = {} ; root_idx = 0
-	__levelorder_traversal_recursive(root, root_idx, result_map)
+	__levelorder_items_recursive(root, root_idx, result_map)
 	return (sorted(result_map.items()))
 
-def __levelorder_traversal_recursive(node, horizontal_idx, result_map):
+def __levelorder_items_recursive(node, horizontal_idx, result_map):
 	if node is None: return 0
 	if horizontal_idx in result_map:
 		result_map[horizontal_idx].append(node.data)
 	else:
 		result_map[horizontal_idx] = [node.data]
-	__levelorder_traversal_recursive(node.left, horizontal_idx + 1, result_map)
-	__levelorder_traversal_recursive(node.right, horizontal_idx + 1, result_map)
+	__levelorder_items_recursive(node.left, horizontal_idx + 1, result_map)
+	__levelorder_items_recursive(node.right, horizontal_idx + 1, result_map)
 
 def vertical_order_traversal_recursive(root):
 	if root is None: return
@@ -108,19 +108,3 @@ def inorder_without_extra_space(root):
 				pre.right = None
 				yield current.data
 				current = current.right
-
-def get_postorder(inorder, preorder):
-  inorder_end_idx = len(preorder) - 1
-  inorder_start_idx = 0
-  global current_preorder_idx ; current_preorder_idx = 0
-  global invalue_inidx_map ; invalue_inidx_map = { k: v for v, k in enumerate(inorder)}
-  return __get_postorder(inorder, preorder, inorder_start_idx, inorder_end_idx)
-
-def __get_postorder(inorder, preorder, inorder_start_idx, inorder_end_idx):
-  global current_preorder_idx
-  if inorder_start_idx > inorder_end_idx: return []
-  inorder_root_idx = invalue_inidx_map[preorder[current_preorder_idx]]
-  current_preorder_idx += 1
-  left_tree = __get_postorder(inorder, preorder, inorder_start_idx, inorder_root_idx - 1)
-  right_tree = __get_postorder(inorder, preorder, inorder_root_idx + 1, inorder_end_idx)
-  return left_tree + right_tree + [inorder[inorder_root_idx]]

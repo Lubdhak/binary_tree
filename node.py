@@ -17,6 +17,8 @@ def sample_tree():
 	root.right.left = Node(10)
 	root.left.right = Node(89)
 	root.left.left = Node(23)
+	# root.left.left.left = Node(43)
+	# root.right.right.left = Node(44)
 	return root
 
 def sample_symmetric_tree():
