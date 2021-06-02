@@ -29,3 +29,12 @@ def delete(root, data):
   if not target_node: return
   target_node.data = last_child.data
   last_child.data = None
+
+def mirrorify_tree_inplace(root):
+  if root is None: return
+  node = root
+  mirrorify_tree_inplace(root.left)
+  mirrorify_tree_inplace(root.right)
+  temp = node.left
+  node.left = node.right
+  node.right = temp

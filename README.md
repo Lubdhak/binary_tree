@@ -27,6 +27,7 @@
 10. Get Postorder traversal from given Inorder and Preorder traversals
 11. Symmetric Tree Check
 12. Get all Cousin Nodes for the given Node
+13. Convert a Binary Tree into its Mirror Tree
 
 
 ##Practiced:
